@@ -151,8 +151,62 @@ function convertToRomanNumerals(num) {
  *  '10,5'    => 'one zero point five'
  *  '1950.2'  => 'one nine five zero point two'
  */
-function convertNumberToString(/* numberStr */) {
-  throw new Error('Not implemented');
+function convertNumberToString(numberStr) {
+  let result = '';
+
+  for (let i = 0; i < numberStr.length; i += 1) {
+    const char = numberStr[i];
+    let word = '';
+
+    switch (char) {
+      case '0':
+        word = 'zero';
+        break;
+      case '1':
+        word = 'one';
+        break;
+      case '2':
+        word = 'two';
+        break;
+      case '3':
+        word = 'three';
+        break;
+      case '4':
+        word = 'four';
+        break;
+      case '5':
+        word = 'five';
+        break;
+      case '6':
+        word = 'six';
+        break;
+      case '7':
+        word = 'seven';
+        break;
+      case '8':
+        word = 'eight';
+        break;
+      case '9':
+        word = 'nine';
+        break;
+      case '.':
+      case ',':
+        word = 'point';
+        break;
+      case '-':
+        word = 'minus';
+        break;
+      default:
+        word = '';
+    }
+
+    if (result.length > 0) {
+      result += ' ';
+    }
+    result += word;
+  }
+
+  return result;
 }
 
 /**
@@ -392,8 +446,26 @@ function sortByAsc(/* arr */) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+function shuffleChar(str, iterations) {
+  let result = str;
+
+  for (let i = 0; i < iterations; i += 1) {
+    const n = result.length;
+    let evenChars = '';
+    let oddChars = '';
+
+    for (let j = 0; j < n; j += 1) {
+      if (j % 2 === 0) {
+        evenChars += result[j];
+      } else {
+        oddChars += result[j];
+      }
+    }
+
+    result = evenChars + oddChars;
+  }
+
+  return result;
 }
 
 /**
